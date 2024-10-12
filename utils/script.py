@@ -1,43 +1,42 @@
 class script(object):
     START = """{},
 
-ɪ ᴀᴍ ᴘᴏsᴛ sᴇᴀʀᴄʜ ʙᴏᴛ,
+I Am a Post Search Bot,
 
-ɪ ᴡɪʟʟ ꜰɪʟᴛᴇʀ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ ᴘᴏsᴛs ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴀɴᴅ sᴇɴᴅ ɪᴛ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴡʜᴇɴ sᴏᴍᴇᴏɴᴇ sᴇᴀʀᴄʜ ɪᴛ.
+I Will Filter Your Link. Only For Personal Use Don't Add In Your Group Bro.
 
 <b>ꜱᴇɴᴅ /help ꜰᴏʀ ᴍᴏʀᴇ ɪɴꜰᴏ</b>"""
 
     HELP = """<b>‼️  ʜᴏᴡ ᴛᴏ ᴜꜱᴇ ᴍᴇ ɪɴ ᴀ ɢʀᴏᴜᴘ  ‼️</b>
 
 
-❂ ᴀᴅᴅ ᴍᴇ ᴀꜱ ᴀᴅᴍɪɴ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴀɴᴅ ᴄʜᴀɴɴᴇʟ.
+❂ Only For Personal Use Don't Add In Your Group Bro
 
-❂ ᴛʏᴘᴇ /verify ɪɴ ɢʀᴏᴜᴘ.
+❂ Type /verify In Group.
 
-❂ ᴡᴀɪᴛ ᴜɴᴛɪʟ ʏᴏᴜʀ ʀᴇǫᴜᴇꜱᴛ ɪꜱ ᴠᴇʀɪꜰɪᴇᴅ ʙʏ <b><a href="https://telegram.me/CodeXBro">ᴏᴡɴᴇʀ</a></b>
+❂ Wait Or Msg The Owner  <b><a href="https://telegram.me/Nexses">ᴏᴡɴᴇʀ</a></b>
 
-❂ ᴀꜰᴛᴇʀ ᴠᴇʀɪꜰɪᴄᴀᴛɪᴏɴ ꜱᴇɴᴅ /connect ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ ɪᴅ
+❂ After Verification /connect Your Channel Id
 <b>⤨ ᴇxᴀᴍᴘʟᴇ -</b>
 
 /connect -100xxxxxxxxxxx
 
-❂ ʀᴇᴍᴏᴠᴇ ᴀ ᴄʜᴀɴɴᴇʟ ᴡɪᴛʜ
+❂ Remove The Channel With This Command.
 /disconnect -100xxxxxxxxxxx
-ᴛʜɪꜱ ᴡɪʟʟ ʜᴇʟᴘ ʏᴏᴜ ᴛᴏ ʀᴇᴍᴏᴠᴇ ᴀ ɪɴᴅᴇxᴇᴅ ᴄʜᴀɴɴᴇʟ ꜰʀᴏᴍ ʏᴏᴜʀ ɢʀᴏᴜᴘ.
 
-❂ ꜰᴏʀ ᴀᴅᴅɪɴɢ ꜰᴏʀᴄᴇ ꜱᴜʙ ɪɴ ɢʀᴏᴜᴘ ᴛʏᴘᴇ /fsub ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ ɪᴅ
+❂ For adding Force Subscribe in Grp Type /fsub ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ ɪᴅ
 <b>⤨ ᴇxᴀᴍᴘʟᴇ -</b>
 
 /fub -100xxxxxxxxxx
 
-❂ ꜰᴏʀ ʀᴇᴍᴏᴠɪɴɢ ꜰᴏʀᴄᴇ ꜱᴜʙ ɪɴ ɢʀᴏᴜᴘ ᴛʏᴘᴇ /nofsub
+❂ Off Fsub /nofsub
 
-❂ ɢᴇᴛ ᴄᴏɴɴᴇᴄᴛᴇᴅ ᴄʜᴀɴɴᴇʟꜱ ʟɪꜱᴛ ᴡɪᴛʜ
+❂ Channels List
 /connections"""
 
     ABOUT = """<b>➣ ᴍʏ ɴᴀᴍᴇ ⋟  {}</b>
-<b>➢ ᴄʀᴇᴀᴛᴏʀ ⋟  <a href=https://telegram.me/CodeXBro>ʀᴀʜᴜʟ</a></b>
-<b>➢ ᴄʜᴀɴɴᴇʟ  ⋟  <a href=https://youtube.com/@RahulReviews>ʀᴀʜᴜʟ ʀᴇᴠɪᴇᴡꜱ</a></b>
+<b>➢ ᴄʀᴇᴀᴛᴏʀ ⋟  <a href=https://telegram.me/Nexses>Nexses</a></b>
+<b>➢ ᴄʜᴀɴɴᴇʟ  ⋟  <a href=https://t.me/Nexses_Corporation>Nexses</a></b>
 <b>➢ ʟᴀɴɢᴜᴀɢᴇ ⋟  <a href=https://www.python.org>ᴘʏᴛʜᴏɴ 3</a></b>
 <b>➣ ᴅᴀᴛᴀʙᴀsᴇ ⋟  <a href=https://www.mongodb.com>ᴍᴏɴɢᴏ ᴅʙ</a></b>
 <b>➢ ʙᴏᴛ sᴇʀᴠᴇʀ ⋟  <a href=https://heroku.com>ʜᴇʀᴏᴋᴜ</a></b>
