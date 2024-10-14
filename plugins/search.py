@@ -35,8 +35,8 @@ async def search(bot, message):
                                           reply_markup=InlineKeyboardMarkup(buttons))
        else:
           msg = await message.reply_text(text=head+results, disable_web_page_preview=True)
-       _time = (int(time()) + (15*60))
-       await save_dlt_message(msg, _time)
+       # _time = (int(time()) + (15*60))
+       # await save_dlt_message(msg, _time)
     except:
        pass
 
@@ -62,7 +62,7 @@ async def recheck(bot, update):
                name = (msg.text or msg.caption).split("\n")[0]
                if name in results:
                   continue 
-               results += f"<b>🎬 {name}\n {msg.link} </b>\n\n"
+               results += f"<b>👉 {name}\n {msg.link} </b>\n\n"
        if bool(results)==False:          
           return await update.message.edit("<b>⚠️ ɴᴏ ʀᴇꜱᴜʟᴛꜱ ꜰᴏᴜɴᴅ !!\nᴘʟᴇᴀꜱᴇ ʀᴇǫᴜᴇꜱᴛ ᴛᴏ ɢʀᴏᴜᴘ ᴀᴅᴍɪɴ 👇🏻</b>", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🧑‍✈️  ʀᴇǫᴜᴇꜱᴛ ᴛᴏ ᴀᴅᴍɪɴ  🧑‍✈️", callback_data=f"request_{id}")]]))
        await update.message.edit(text=head+results, disable_web_page_preview=True)
@@ -86,3 +86,4 @@ async def request(bot, update):
     text  = f"#Request\n\nɴᴀᴍᴇ - {name}\nɪᴍᴅʙ - {url}"
     await bot.send_message(chat_id=admin, text=text, disable_web_page_preview=True)
     await update.answer("ʀᴇǫᴜᴇꜱᴛ ꜱᴇɴᴅ ᴛᴏ ᴀᴅᴍɪɴ  ✅", show_alert=True)
+    # await update.message.delete(60)
