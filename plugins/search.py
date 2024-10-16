@@ -37,9 +37,8 @@ async def search(bot, message):
           msg = await message.reply_text(text=head+results, disable_web_page_preview=True)
        _time = (int(time()) + (15*60))
        await save_dlt_message(msg, _time)
-    except:
-       pass
-
+    except Exception as e:
+    print(f"An error occurred: {e}") 
 @Client.on_callback_query(filters.regex(r"^recheck"))
 async def recheck(bot, update):
     clicked = update.from_user.id
