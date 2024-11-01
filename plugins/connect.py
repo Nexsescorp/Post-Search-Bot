@@ -5,7 +5,7 @@ from pyrogram import Client, filters
 
 @Client.on_message(filters.group & filters.command("connect"))
 async def connect(bot, message):
-    m=await message.reply("<b>ᴄᴏɴɴᴇᴄᴛɪɴɢ...</b>")
+    m=await message.reply("connecting..")
     user = await User.get_me()
     try:
        group     = await get_group(message.chat.id)
@@ -18,14 +18,14 @@ async def connect(bot, message):
     if message.from_user.id!=user_id:
        return await m.edit(f"Only {user_name} can use this command 😁")
     if bool(verified)==False:
-       return await m.edit("ᴛʜɪꜱ ᴄʜᴀᴛ ɪꜱ ɴᴏᴛ ᴠᴇʀɪꜰɪᴇᴅ 🚫\nᴜꜱᴇ /verify")    
+       return await m.edit("This chat is not verified!\nuse /verify")    
     try:
        channel = int(message.command[-1])
        if channel in channels:
-          return await message.reply("ᴛʜɪꜱ ᴄʜᴀɴɴᴇʟ ɪꜱ ᴀʟʀᴇᴀᴅʏ ᴄᴏɴɴᴇᴄᴛᴇᴅ")
+          return await message.reply("This channel is already connected! You Cant Connect Again")
        channels.append(channel)
     except:
-       return await m.edit("ɪɴᴄᴏʀʀᴇᴄᴛ ꜰᴏʀᴍᴀᴛ 🚫\nᴜꜱᴇ `/connect` ᴄʜᴀɴɴᴇʟ ɪᴅ")    
+       return await m.edit("❌ Incorrect format!\nUse `/connect ChannelID`")    
     try:
        chat   = await bot.get_chat(channel)
        group  = await bot.get_chat(message.chat.id)
@@ -36,17 +36,17 @@ async def connect(bot, message):
        if "The user is already a participant" in str(e):
           pass
        else:
-          text = f"🚫  ᴇʀʀᴏʀ  -  `{str(e)}`\nᴍᴀᴋᴇ ꜱᴜʀᴇ ᴛʜᴀᴛ ɪ ᴀᴍ ᴀᴅᴍɪɴ ɪɴ ᴛʜᴀᴛ ᴄʜᴀɴɴᴇʟ ᴀɴᴅ ɢʀᴏᴜᴘ ᴡɪᴛʜ ᴀʟʟ ᴘᴇʀᴍɪꜱꜱɪᴏɴꜱ ᴀɴᴅ {(user.username or user.mention)} ɪꜱ ɴᴏᴛ ʙᴀɴɴᴇᴅ ᴛʜᴇʀᴇ."
+          text = f"❌ Error: `{str(e)}`\nMake sure I'm admin in that channel & this group with all permissions and {(user.username or user.mention)} is not banned there"
           return await m.edit(text)
     await update_group(message.chat.id, {"channels":channels})
-    await m.edit(f"ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ᴄᴏɴɴᴇᴄᴛᴇᴅ ᴛᴏ\n[{chat.title}]({c_link})", disable_web_page_preview=True)
+    await m.edit(f"✅ Successfully connected to [{chat.title}]({c_link})!", disable_web_page_preview=True)
     text = f"#NewConnection\n\nUser: {message.from_user.mention}\nGroup: [{group.title}]({g_link})\nChannel: [{chat.title}]({c_link})"
     await bot.send_message(chat_id=LOG_CHANNEL, text=text)
 
 
 @Client.on_message(filters.group & filters.command("disconnect"))
 async def disconnect(bot, message):
-    m=await message.reply("<b>ᴘʟᴇᴀꜱᴇ  ᴡᴀɪᴛ...</b>")   
+    m=await message.reply("Please wait..")   
     try:
        group     = await get_group(message.chat.id)
        user_id   = group["user_id"] 
@@ -58,14 +58,14 @@ async def disconnect(bot, message):
     if message.from_user.id!=user_id:
        return await m.edit(f"Only {user_name} can use this command 😁")
     if bool(verified)==False:
-       return await m.edit("ᴛʜɪꜱ ᴄʜᴀᴛ ɪꜱ ɴᴏᴛ ᴠᴇʀɪꜰɪᴇᴅ 🚫\nᴜꜱᴇ /verify")    
+       return await m.edit("This chat is not verified!\nuse /verify")    
     try:
        channel = int(message.command[-1])
        if channel not in channels:
-          return await m.edit("ʏᴏᴜ ᴅɪᴅ ɴᴏᴛ ᴀᴅᴅᴇᴅ ᴛʜɪꜱ ᴄʜᴀɴɴᴇʟ ʏᴇᴛ")
+          return await m.edit("You didn't added this channel yet Or Check Channel Id")
        channels.remove(channel)
     except:
-       return await m.edit("ɪɴᴄᴏʀʀᴇᴄᴛ ꜰᴏʀᴍᴀᴛ 🚫\nᴜꜱᴇ `/disconnect` ᴄʜᴀɴɴᴇʟ ɪᴅ")
+       return await m.edit("❌ Incorrect format!\nUse `/disconnect ChannelID`")
     try:
        chat   = await bot.get_chat(channel)
        group  = await bot.get_chat(message.chat.id)
@@ -73,10 +73,10 @@ async def disconnect(bot, message):
        g_link = group.invite_link
        await User.leave_chat(channel)
     except Exception as e:
-       text = f"🚫  ᴇʀʀᴏʀ  -  `{str(e)}`\nᴍᴀᴋᴇ ꜱᴜʀᴇ ᴛʜᴀᴛ ɪ ᴀᴍ ᴀᴅᴍɪɴ ɪɴ ᴛʜᴀᴛ ᴄʜᴀɴɴᴇʟ ᴀɴᴅ ɢʀᴏᴜᴘ ᴡɪᴛʜ ᴀʟʟ ᴘᴇʀᴍɪꜱꜱɪᴏɴꜱ ᴀɴᴅ {(user.username or user.mention)} ɪꜱ ɴᴏᴛ ʙᴀɴɴᴇᴅ ᴛʜᴇʀᴇ."
+       text = f"❌ Error: `{str(e)}`\nMake sure I'm admin in that channel & this group with all permissions and {(user.username or user.mention)} is not banned there"
        return await m.edit(text)
     await update_group(message.chat.id, {"channels":channels})
-    await m.edit(f"ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ᴅɪꜱᴄᴏɴɴᴇᴄᴛᴇᴅ ꜰʀᴏᴍ [{chat.title}]({c_link})", disable_web_page_preview=True)
+    await m.edit(f"✅ Successfully disconnected from [{chat.title}]({c_link})!", disable_web_page_preview=True)
     text = f"#DisConnection\n\nUser: {message.from_user.mention}\nGroup: [{group.title}]({g_link})\nChannel: [{chat.title}]({c_link})"
     await bot.send_message(chat_id=LOG_CHANNEL, text=text)
 
@@ -91,16 +91,16 @@ async def connections(bot, message):
     if message.from_user.id!=user_id:
        return await message.reply(f"Only {user_name} can use this command 😁")
     if bool(channels)==False:
-       return await message.reply("ᴛʜɪꜱ ɢʀᴏᴜᴘ ɪꜱ ᴄᴜʀʀᴇɴᴛʟʏ ɴᴏᴛ ᴄᴏɴɴᴇᴄᴛᴇᴅ ᴛᴏ ᴀɴʏ ᴄʜᴀɴɴᴇʟꜱ..\nᴄᴏɴɴᴇᴄᴛ ᴏɴᴇ ᴜꜱɪɴɢ /connect")
-    text = "ᴛʜɪꜱ ɢʀᴏᴜᴘ ɪꜱ ᴄᴏɴɴᴇᴄᴛᴇᴅ ᴡɪᴛʜ - \n\n"
+       return await message.reply("This group is currently not connected to any channels!\nConnect one using /connect")
+    text = "This Group is currently connected to:\n\n"
     for channel in channels:
         try:
            chat = await bot.get_chat(channel)
            name = chat.title
            link = chat.invite_link
-           text += f"[{name}]({link})\n"
+           text += f"🔗Connected Channel - [{name}]({link})\n"
         except Exception as e:
-           await message.reply(f"🚫  ᴇʀʀᴏʀ  ɪɴ `{channel}:`\n`{e}`")
+           await message.reply(f"❌ Error in `{channel}:`\n`{e}`")
     if bool(f_sub):
        try:
           f_chat  = await bot.get_chat(channel)
@@ -108,6 +108,6 @@ async def connections(bot, message):
           f_link  = f_chat.invite_link
           text += f"\nFSub: [{f_title}]({f_link})"
        except Exception as e:
-          await message.reply(f"❌ ᴇʀʀᴏʀ  ɪɴ  ꜰꜱᴜʙ  (`{f_sub}`)\n`{e}`")
+          await message.reply(f"❌ Error in FSub (`{f_sub}`)\n`{e}`")
    
     await message.reply(text=text, disable_web_page_preview=True)
