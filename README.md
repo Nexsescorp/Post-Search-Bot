@@ -1,3 +1,6 @@
+<h3 align="center"> Repo has a minor issue  </h3>
+<h6 align="center"> (रेपो में एक छोटा सा समस्या है।) </h6>
+
 <h1 align="center">
  <b><a href="https://youtu.be/kuW1DwrHC1M" target="/blank">Post Search Bot</a>
 </h1>
